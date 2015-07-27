@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour {
 
     public static GameController controller;
 
-    public bool hasKey;
+    public bool hasKey = true;
 
     public int nextLevel;
     public int curLevel;
@@ -28,9 +28,15 @@ public class GameController : MonoBehaviour {
         curLevel = Application.loadedLevel;
 	}
 
+    void OnLevelWasLoaded()
+    {
+        hasKey = false;
+        Physics2D.gravity = new Vector3(0.0f, 9.8f, 0.0f);
+    }
+
 	void Update ()
     {
-        Debug.Log(Application.loadedLevel);
+        Debug.Log(hasKey);
 	}
 
     public void FlipGravity()
@@ -42,7 +48,7 @@ public class GameController : MonoBehaviour {
     {
         if (hasKey == true)
         {
-            Application.LoadLevel(nextLevel);
+            Application.LoadLevel(curLevel+1);
         }
     }
 }

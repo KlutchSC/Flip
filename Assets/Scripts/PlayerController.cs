@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour {
                 GameController.controller.LoadNewLevel();
             }
         }
+        if (other.gameObject.tag == "levelKey")
+        {
+            GameController.controller.hasKey = true;
+        }
     }
 
     void CheckInput()
