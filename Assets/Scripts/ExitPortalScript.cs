@@ -3,13 +3,31 @@ using System.Collections;
 
 public class ExitPortalScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public Color32 lockedColor = new Color32();
+    public Color32 exitColor = new Color32();
+
+    public SpriteRenderer sr = new SpriteRenderer();
+    public ParticleSystem ps = new ParticleSystem();
+
+    void Start ()
+    {
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        ps = gameObject.GetComponent<ParticleSystem>();
+        sr.color = lockedColor;
+        ps.enableEmission = false;
+    }
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+    {
+	    if (GameController.controller.hasKey == true)
+        {
+            sr.color = exitColor;
+            ps.enableEmission = true;
+        }
+        else
+        {
+            sr.color = lockedColor;
+            ps.enableEmission = true;
+        }
 	}
 }

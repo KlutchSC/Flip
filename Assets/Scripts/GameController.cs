@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour {
 
     public static GameController controller;
 
-    public bool hasKey = true;
+    public bool hasKey = false;
 
     public int nextLevel;
     public int curLevel;
@@ -21,6 +21,11 @@ public class GameController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        if (Application.loadedLevel == 0)
+        {
+            InvokeRepeating("FlipGravity", 1.0f, 2.0f);
+        }
     }
 
 	void Start()
@@ -31,7 +36,7 @@ public class GameController : MonoBehaviour {
     void OnLevelWasLoaded()
     {
         hasKey = false;
-        Physics2D.gravity = new Vector3(0.0f, 9.8f, 0.0f);
+        Physics2D.gravity = new Vector3(0.0f, -9.8f, 0.0f);
     }
 
 	void Update ()
@@ -46,9 +51,6 @@ public class GameController : MonoBehaviour {
 
     public void LoadNewLevel()
     {
-        if (hasKey == true)
-        {
-            Application.LoadLevel(curLevel+1);
-        }
+        Application.LoadLevel(curLevel+1);
     }
 }

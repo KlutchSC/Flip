@@ -5,16 +5,29 @@ public class FloorScript : MonoBehaviour {
 
     SpriteRenderer myRender;
 
-    public Color32 color_01 = new Color32();
-    public Color32 color_02 = new Color32();
-    public Color32 color_03 = new Color32();
-    public Color32 color_04 = new Color32();
-    public Color32 color_05 = new Color32();
+    public bool isFloor;
+    public bool isFire;
+
+    public Color32 floorColor = new Color32();
+    public Color32 bgColor = new Color32();
+    public Color32 fireColor = new Color32();
 
 	void Start ()
     {
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
-        sr.color = color_01;
+
+        if (isFloor)
+        {
+            sr.color = floorColor;
+        }
+        else if (isFire)
+        {
+            sr.color = fireColor;
+        }
+        else
+        {
+            sr.color = bgColor;
+        }
 	}
 	
 	void Update () 
