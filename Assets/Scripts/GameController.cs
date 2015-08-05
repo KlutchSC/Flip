@@ -21,11 +21,6 @@ public class GameController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-
-        if (Application.loadedLevel == 0)
-        {
-            InvokeRepeating("FlipGravity", 1.0f, 2.0f);
-        }
     }
 
 	void Start()
