@@ -34,6 +34,14 @@ public class PlayerController : MonoBehaviour {
         {
             GameController.controller.hasKey = true;
         }
+        if (other.gameObject.tag == "FireBall")
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+        if (other.gameObject.tag == "Flipper")
+        {
+            GameController.controller.FlipGravity();
+        }
     }
 
     void CheckInput()
@@ -54,5 +62,25 @@ public class PlayerController : MonoBehaviour {
         {
             MovePlayer(0.0f);
         }
+
+        //if (Input.acceleration.x > 0.2f)
+        //{
+        //    MovePlayer(1.0f);
+        //}
+
+        //if (Input.acceleration.x < -0.2f)
+        //{
+        //    MovePlayer(-1.0f);
+        //}
+
+        //if (Input.acceleration.x > -0.19f && Input.acceleration.x < 0.19f)
+        //{
+        //    MovePlayer(0.0f);
+        //}
+
+        //if (Input.GetTouch(0).phase == TouchPhase.Began)
+        //{
+        //    GameController.controller.FlipGravity();
+        //}
     }
 }

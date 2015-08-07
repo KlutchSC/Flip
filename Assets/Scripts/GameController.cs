@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour {
     {
         hasKey = false;
         Physics2D.gravity = new Vector3(0.0f, -9.8f, 0.0f);
+        curLevel = Application.loadedLevel;
     }
 
 	void Update ()
